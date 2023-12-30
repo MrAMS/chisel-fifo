@@ -35,3 +35,4 @@ trait testable extends SbtModule { m =>
 }
 
 object BubbleFifo extends base with testable
+object DoubleBufFifo extends base with testable

@@ -6,7 +6,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.annotation.tailrec
 
-class BubbleFifoTest extends AnyFlatSpec with ChiselScalatestTester {
+class FifoTest extends AnyFlatSpec with ChiselScalatestTester {
   def testFifo[T <: Fifo[_ <: Data]](dut: T) = {
     val batchSize = 100
     val timeOut = 5 * dut.depth
@@ -74,6 +74,12 @@ class BubbleFifoTest extends AnyFlatSpec with ChiselScalatestTester {
   behavior of "BubbleFifo"
   it should "pass" in {
     test(new BubbleFifo(UInt(8.W), 4)).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+      testFifo(dut)
+    }
+  }
+  behavior of "DoubleBufFifo"
+  it should "pass" in {
+    test(new DoubleBufFifo(UInt(8.W), 4)).withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
       testFifo(dut)
     }
   }

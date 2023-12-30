@@ -1,4 +1,4 @@
-NAME = BubbleFifo
+NAME = DoubleBufFifo
 
 test:
 	mill $(NAME).test
